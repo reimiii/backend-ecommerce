@@ -24,6 +24,7 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware([ 'auth:api_admin' ])->group(function () {
 
+        // login controller
         Route::get('user', [
             \App\Http\Controllers\Api\Admin\LoginController::class,
             'getUser',
@@ -42,11 +43,16 @@ Route::prefix('admin')->group(function () {
             [ 'as' => 'admin' ]
         ]);
 
+        // end login controller
+
+        // dashboard controller
+        Route::get('dashboard', [
+            \App\Http\Controllers\Api\Admin\DashboardController::class,
+            'index',
+            [ 'as' => 'admin' ]
+        ]);
+
 
     });
 
 });
-
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
