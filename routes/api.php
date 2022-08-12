@@ -46,12 +46,26 @@ Route::prefix('admin')->group(function () {
         // end login controller
 
         // dashboard controller
+
         Route::get('dashboard', [
             \App\Http\Controllers\Api\Admin\DashboardController::class,
             'index',
             [ 'as' => 'admin' ]
         ]);
 
+        // end dashboard controller
+
+        // category controller
+
+        Route::apiResource('categories',
+            \App\Http\Controllers\Api\Admin\CategoryController::class,
+            [
+                'except' => [
+                    'create',
+                    'edit'
+                ],
+                'as'     => 'admin'
+            ]);
 
     });
 
