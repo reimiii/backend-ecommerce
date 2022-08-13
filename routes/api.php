@@ -55,6 +55,14 @@ Route::prefix('admin')->group(function () {
 
         // end dashboard controller
 
+        // customer controller
+        Route::get('customers', [
+            \App\Http\Controllers\Api\Admin\CustomerController::class,
+            'index',
+            [ 'as' => 'admin' ]
+        ]);
+        // end customer controller
+
         // category controller
         Route::apiResource('categories',
             \App\Http\Controllers\Api\Admin\CategoryController::class,
