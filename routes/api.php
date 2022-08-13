@@ -102,6 +102,21 @@ Route::prefix('admin')->group(function () {
             ]);
         // end invoice controller
 
+        // slider controller
+        Route::apiResource('sliders',
+            \App\Http\Controllers\Api\Admin\SliderController::class,
+            [
+                'except' => [
+                    'create',
+                    'edit',
+                    'show',
+                    'edit',
+                    'update'
+                ],
+                'as'     => 'admin'
+            ]);
+        // end slider controller
+
 
     });
 

@@ -42,7 +42,6 @@ class CategoryController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-
         $image = $request->file('image');
         $image->storeAs('public/categories', $image->hashName());
 
