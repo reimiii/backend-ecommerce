@@ -79,6 +79,21 @@ Route::prefix('admin')->group(function () {
             ]);
         // end product controller
 
+        // invoice controller
+        Route::apiResource('invoices',
+            \App\Http\Controllers\Api\Admin\InvoiceController::class,
+            [
+                'except' => [
+                    'create',
+                    'edit',
+                    'store',
+                    'update',
+                    'destroy'
+                ],
+                'as'     => 'admin'
+            ]);
+        // end invoice controller
+
 
     });
 
