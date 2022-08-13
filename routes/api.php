@@ -56,7 +56,6 @@ Route::prefix('admin')->group(function () {
         // end dashboard controller
 
         // category controller
-
         Route::apiResource('categories',
             \App\Http\Controllers\Api\Admin\CategoryController::class,
             [
@@ -66,6 +65,20 @@ Route::prefix('admin')->group(function () {
                 ],
                 'as'     => 'admin'
             ]);
+        // end category controller
+
+        // product controller
+        Route::apiResource('products',
+            \App\Http\Controllers\Api\Admin\ProductController::class,
+            [
+                'except' => [
+                    'create',
+                    'edit'
+                ],
+                'as'     => 'admin'
+            ]);
+        // end product controller
+
 
     });
 
