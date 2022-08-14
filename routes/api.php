@@ -117,6 +117,18 @@ Route::prefix('admin')->group(function () {
             ]);
         // end slider controller
 
+        // user controller
+        Route::apiResource('users',
+            \App\Http\Controllers\Api\Admin\UserController::class,
+            [
+                'except' => [
+                    'create',
+                    'edit'
+                ],
+                'as'     => 'admin'
+            ]);
+        // end user controller
+
 
     });
 
