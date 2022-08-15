@@ -129,7 +129,48 @@ Route::prefix('admin')->group(function () {
             ]);
         // end user controller
 
+    });
+});
+
+Route::prefix('customer')->group(function () {
+
+    Route::post('login', [
+        \App\Http\Controllers\Api\Customer\LoginController::class,
+        'index',
+        [ 'as' => 'customer' ]
+    ]);
+
+    Route::post('register', [
+        \App\Http\Controllers\Api\Customer\RegisterController::class,
+        'store',
+        [ 'as' => 'customer' ]
+    ]);
+
+    Route::middleware('auth:api_customer')->group(function () {
+
+        // data customer
+        Route::get('user', [
+            \App\Http\Controllers\Api\Customer\LoginController::class,
+            'getUser',
+            [ 'as' => 'customer' ]
+        ]);
+
+        // refresh token
+        Route::get('refresh', [
+            \App\Http\Controllers\Api\Customer\LoginController::class,
+            'refreshToken',
+            [ 'as' => 'customer' ]
+        ]);
+
+        // logout
+        Route::post('logout', [
+            \App\Http\Controllers\Api\Customer\LoginController::class,
+            'logout',
+            [ 'as' => 'customer' ]
+        ]);
+
 
     });
+
 
 });
