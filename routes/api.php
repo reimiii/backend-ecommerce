@@ -176,6 +176,21 @@ Route::prefix('customer')->group(function () {
             [ 'as' => 'customer' ]
         ]);
 
+        // invoice customer
+
+        Route::apiResource('invoices',
+            \App\Http\Controllers\Api\Customer\InvoiceController::class,
+            [
+                'except' => [
+                    'create',
+                    'edit',
+                    'store',
+                    'update',
+                    'destroy'
+                ],
+                'as'     => 'customer'
+            ]);
+
 
     });
 
