@@ -191,6 +191,12 @@ Route::prefix('customer')->group(function () {
                 'as'     => 'customer'
             ]);
 
+        Route::post('reviews', [
+            \App\Http\Controllers\Api\Customer\ReviewController::class,
+            'store',
+            [ 'as' => 'customer' ]
+        ]);
+
 
     });
 
