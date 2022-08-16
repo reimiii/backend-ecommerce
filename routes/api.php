@@ -200,5 +200,18 @@ Route::prefix('customer')->group(function () {
 
     });
 
+});
 
+
+Route::prefix('web')->group(function () {
+    Route::apiResource('categories', \App\Http\Controllers\Api\Web\CategoryController::class, [
+        'except' => [
+            'create',
+            'store',
+            'edit',
+            'update',
+            'destroy'
+        ],
+        'as'     => 'web'
+    ]);
 });

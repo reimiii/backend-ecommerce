@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
+
     use HasFactory;
 
     protected $fillable = [
-        'product_id',
-        'order_id',
-        'customer_id',
         'rating',
         'review',
+        'product_id',
+        'order_id',
+        'customer_id'
     ];
 
     public function product(): BelongsTo
