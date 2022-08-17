@@ -250,5 +250,39 @@ Route::prefix('web')->group(function () {
         [ 'as' => 'web' ]
     ]);
 
+    Route::prefix('carts')->group(function () {
+
+        Route::get('/', [
+            \App\Http\Controllers\Api\Web\CartController::class,
+            'index',
+            [ 'as' => 'web' ]
+        ]);
+
+        Route::post('/', [
+            \App\Http\Controllers\Api\Web\CartController::class,
+            'store',
+            [ 'as' => 'web' ]
+        ]);
+
+        Route::get('total-price', [
+            \App\Http\Controllers\Api\Web\CartController::class,
+            'getCartPrice',
+            [ 'as' => 'web' ]
+        ]);
+
+        Route::get('total-weight', [
+            \App\Http\Controllers\Api\Web\CartController::class,
+            'cartWeight',
+            [ 'as' => 'web' ]
+        ]);
+
+        Route::post('remove', [
+            \App\Http\Controllers\Api\Web\CartController::class,
+            'removeCart',
+            [ 'as' => 'web' ]
+        ]);
+
+    });
+
 
 });
