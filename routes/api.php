@@ -231,4 +231,24 @@ Route::prefix('web')->group(function () {
         'index',
         [ 'as' => 'web' ]
     ]);
+
+    Route::get('rajaongkir/province', [
+        \App\Http\Controllers\Api\Web\RajaOngkirController::class,
+        'getProvinces',
+        [ 'as' => 'web' ]
+    ]);
+
+    Route::post('rajaongkir/cities', [
+        \App\Http\Controllers\Api\Web\RajaOngkirController::class,
+        'getCities',
+        [ 'as' => 'web' ]
+    ]);
+
+    Route::post('rajaongkir/check-ongkir', [
+        \App\Http\Controllers\Api\Web\RajaOngkirController::class,
+        'checkOngkir',
+        [ 'as' => 'web' ]
+    ]);
+
+
 });
