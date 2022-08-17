@@ -214,4 +214,15 @@ Route::prefix('web')->group(function () {
         ],
         'as'     => 'web'
     ]);
+
+    Route::apiResource('products', \App\Http\Controllers\Api\Web\ProductController::class, [
+        'except' => [
+            'create',
+            'store',
+            'edit',
+            'update',
+            'destroy'
+        ],
+        'as'     => 'web'
+    ]);
 });

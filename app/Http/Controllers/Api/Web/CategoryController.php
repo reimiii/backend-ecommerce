@@ -19,17 +19,20 @@ class CategoryController extends Controller
     public function show($slug)
     {
         $category = Category::with('products.category')
+            //get count review and average review
             ->with('products', function ($query) {
                 $query->withCount('reviews');
                 $query->withAvg('reviews', 'rating');
             })
             ->where('slug', $slug)->first();
 
-        if ( $category ) {
-            return new CategoryResource(true, 'Category found : ' . $category->name, $category);
+        if($category) {
+            //return success with Api Resource
+            return new CategoryResource(true, 'Data Product By Category : '.$category->name.'', $category);
         }
 
-        return new CategoryResource(false, 'Category not found', null);
+        //return failed with Api Resource
+        return new CategoryResource(false, 'Detail data not Found', null);
     }
 
 }
