@@ -225,4 +225,10 @@ Route::prefix('web')->group(function () {
         ],
         'as'     => 'web'
     ]);
+
+    Route::get('sliders', [
+        \App\Http\Controllers\Api\Web\SliderController::class,
+        'index',
+        [ 'as' => 'web' ]
+    ]);
 });
