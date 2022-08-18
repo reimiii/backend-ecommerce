@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -283,6 +282,18 @@ Route::prefix('web')->group(function () {
         ]);
 
     });
+
+    Route::post('checkout', [
+        \App\Http\Controllers\Api\Web\CheckoutController::class,
+        'store',
+        [ 'as' => 'web' ]
+    ]);
+
+    Route::post('notifications', [
+        \App\Http\Controllers\Api\Web\NotificationHandlerController::class,
+        'index',
+        [ 'as' => 'web' ]
+    ]);
 
 
 });
